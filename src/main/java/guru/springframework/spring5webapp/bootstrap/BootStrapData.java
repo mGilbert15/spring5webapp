@@ -5,24 +5,29 @@ import org.springframework.stereotype.Component;
 
 import guru.springframework.spring5webapp.domain.Author;
 import guru.springframework.spring5webapp.domain.Book;
+import guru.springframework.spring5webapp.domain.Publisher;
 import guru.springframework.spring5webapp.repositories.AuthorRepository;
 
 import guru.springframework.spring5webapp.repositories.BookRepository;
+import guru.springframework.spring5webapp.repositories.PublisherRepository;
 
 @Component
 public class BootStrapData implements CommandLineRunner {
 
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
+    private final PublisherRepository publisherRepository;
     
     /**
      * Creates BootStrap data with given author and book repositories.
      * @param authorRepository the AuthorRepository to bootstrap
-     * @param bookRepository theBookRepository to bootstrap
+     * @param bookRepository the BookRepository to bootstrap
+     * @param publisherRepository the PublisherRepository to bootstrap
      */
-    public BootStrapData(AuthorRepository authorRepository, BookRepository bookRepository) {
+    public BootStrapData(AuthorRepository authorRepository, BookRepository bookRepository, PublisherRepository publisherRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
+        this.publisherRepository = publisherRepository;
     }
 
     @Override
@@ -48,7 +53,17 @@ public class BootStrapData implements CommandLineRunner {
         this.bookRepository.save(fablehaven);
 
         System.out.println("Bootstrapping data...");
-        System.out.println("There are currently " + this.bookRepository.count() + " in the repository");
+        System.out.println("There are currently " + this.bookRepository.count() + " books in the repository");
+        
+        //Creating a test publisher object
+        Publisher penguin = new Publisher("Penguin Books", "Street", "City", "State", 29185);
+        this.publisherRepository.save(penguin);
+        
+
+
+
+        System.out.println("There are currently " + this.publisherRepository.count() + " publishers in the repository");
+        System.out.println("Publisher list " + this.publisherRepository.findAll());
         
     }
     
