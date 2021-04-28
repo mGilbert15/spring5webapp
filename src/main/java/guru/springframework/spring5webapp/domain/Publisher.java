@@ -1,9 +1,14 @@
 package guru.springframework.spring5webapp.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 /**
  * Represents a Book Publisher.
@@ -20,6 +25,10 @@ public class Publisher {
     private String city;
     private String state;
     private int zip;
+
+    @OneToMany
+    @JoinColumn(name = "publisher_id")
+    private Set<Book> books = new HashSet<Book>();
 
     /**
      * Default Publisher Constructor.
@@ -148,6 +157,22 @@ public class Publisher {
     }
 
     /**
+     * Get's all the books that the Publisher has published.
+     * @return all the books the publisher published
+     */
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    /**
+     * Updates the books a publisher has published.
+     * @param books the updated list of books a published
+     */
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
+
+    /**
      * Updates the zipcode of the Publisher.
      * 
      * @param zip the updated publisher zipcode
@@ -184,7 +209,7 @@ public class Publisher {
     @Override
     public String toString() {
         return "Publisher [name=" + name + " addressLine1=" + addressLine1 + ", city=" + city + ", id=" + id + ", state=" + state
-                + ", zip=" + zip + "]";
+                + ", zip=" + zip + ", books=" + books + "]";
     }
 
 }

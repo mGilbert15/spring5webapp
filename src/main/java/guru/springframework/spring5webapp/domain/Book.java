@@ -9,6 +9,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 
 /**
@@ -28,6 +29,10 @@ public class Book {
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors = new HashSet<Author>();
+
+    @ManyToOne
+    private Publisher publisher;
+
 
     /**
      * Default Book Constructor.
@@ -109,6 +114,22 @@ public class Book {
         this.authors = authors;
     }
 
+        /**
+     * Get's the book's publisher.
+     * @return the book's publisher.
+     */
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    /**
+     * Update the book's publisher
+     * @param publisher the book's new publisher
+     */
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
+
     /**
      * Checks to see if the given object is an Book and if it has the same id. If so returns true else returns false.
      */
@@ -136,11 +157,11 @@ public class Book {
 
 
     /**
-     * String representing the Book includes info about book such as list of unique authors, id, isbn, and title.
+     * String representing the Book includes info about book such as list of unique authors, id, isbn, title and publisher.
      */
     @Override
     public String toString() {
-        return "Book [authors=" + authors + ", id=" + id + ", isbn=" + isbn + ", title=" + title + "]";
+        return "Book [authors=" + authors + ", id=" + id + ", isbn=" + isbn + ", title=" + title +  ", publisher=" + publisher +  "]";
     }
 
 }
