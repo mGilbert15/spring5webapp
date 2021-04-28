@@ -24,42 +24,82 @@ public class Author {
     @ManyToMany(mappedBy = "authors")
     private Set<Book> books;
 
+    /**
+     * Default Author constructor.
+     */
     public Author() {
     }
 
+    /**
+     * Creates an Author with a given first and last name.
+     * @param firstName first name of the author
+     * @param lastName last name of the author
+     */
     public Author(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
+    /**
+     * Gets the Id of the Author.
+     * @return the author's id
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Sets the Author ID.
+     * @param id the new author id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * Get's the author's first name.
+     * @return the author's first name.
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * Sets the author's first name to a given string value.
+     * @param firstName the new author first name.
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    /**
+     * Get's the Author's Last name.
+     * @return the author's last name.
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * Sets the author's last name to a given string value.
+     * @param lastName the new author last name.
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    /**
+     * Gets a list of unique books that the author has written.
+     * @return list of unqiue books the author has written.
+     */
     public Set<Book> getBooks() {
         return books;
     }
 
+    /**
+     * Sets a unique set of books that the author has written.
+     * @param books the new set of books the author has written
+     */
     public void setBooks(Set<Book> books) {
         this.books = books;
     }
@@ -72,6 +112,9 @@ public class Author {
         return result;
     }
 
+    /**
+     * Checks to see if the given object is an Author and if it has the same id. If so returns true else returns false.
+     */
     @Override
     public boolean equals(Object obj) {
 
@@ -86,6 +129,9 @@ public class Author {
         return false;
     }
 
+    /**
+     * String representing the author includes info about books the author has written, firstname, lastname, id and isbn.
+     */
     @Override
     public String toString() {
         return "Author [books=" + books + ", firstName=" + firstName + ", id=" + id + ", lastName=" + lastName + "]";

@@ -11,7 +11,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.JoinColumn;
 
 /**
- * Created by jt on 12/22/19.
+ * Represents a Book.
  */
 @Entity
 public class Book {
@@ -52,34 +52,65 @@ public class Book {
         return id;
     }
 
+    /**
+     * Updates the id of the book to the given value.
+     * @param id the new book id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * Get's the title of the book.
+     * @return the title of the book
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Updates the title of the book to the given value.
+     * @param title the new book title
+     */
     public void setTitle(String title) {
         this.title = title;
     }
 
+    /**
+     * Get's the ISBN number of the Book.
+     * @return  the ISBN number of the book
+     */
     public String getIsbn() {
         return isbn;
     }
 
+    /**
+     * update the Book's ISBN number to the given value.
+     * @param isbn the new isbn number
+     */
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
+    /**
+     * Get's a list of unique authors that wrote the book.
+     * @return  list of unique authors that wrote the book
+     */
     public Set<Author> getAuthors() {
         return authors;
     }
 
+    /**
+     * Reset the authors that wrote the book to a new given value.
+     * @param authors new list of authors that wrote the book
+     */
     public void setAuthors(Set<Author> authors) {
         this.authors = authors;
     }
 
+    /**
+     * Checks to see if the given object is an Book and if it has the same id. If so returns true else returns false.
+     */
     @Override
     public boolean equals(Object obj) {
 
@@ -103,6 +134,9 @@ public class Book {
     }
 
 
+    /**
+     * String representing the Book includes info about book such as list of unique authors, id, isbn, and title.
+     */
     @Override
     public String toString() {
         return "Book [authors=" + authors + ", id=" + id + ", isbn=" + isbn + ", title=" + title + "]";
