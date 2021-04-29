@@ -209,7 +209,7 @@ public class Publisher {
     @Override
     public String toString() {
         return "Publisher [name=" + name + " addressLine1=" + addressLine1 + ", city=" + city + ", id=" + id + ", state=" + state
-                + ", zip=" + zip + ", books=" + books + "]";
+                + ", zip=" + zip + "]";
     }
 
 }

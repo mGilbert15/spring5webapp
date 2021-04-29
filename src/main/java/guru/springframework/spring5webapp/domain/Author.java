@@ -131,7 +131,7 @@ public class Author {
      */
     @Override
     public String toString() {
-        return "Author [books=" + books + ", firstName=" + firstName + ", id=" + id + ", lastName=" + lastName + "]";
+        return "Author [firstName=" + firstName + ", id=" + id + ", lastName=" + lastName + "]";
     }
 
     @Override
