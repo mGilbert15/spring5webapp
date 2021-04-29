@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Spring Framework Guru</title>
+  </head>
+  <body>
+    <h1>Author List</h1>
+
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Books</th>
+      </tr>
+      <!--Displays details about books in a table using thymeleaf-->
+      <tr th:each="author : ${authors}">
+        <td th:text="${author.id}"></td>
+        <td th:text="${author.firstName}"></td>
+        <td th:text="${author.lastName}"></td>
+        <td th:each="book : ${author.books}" th:text="${book.title} "></td>
+        <!-- <td th:if="${book.publisher} != null" th:text="${book.publisher.name}">
+          Wrox
+        </td> -->
+      </tr>
+    </table>
+  </body>
+</html>

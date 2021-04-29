@@ -45,8 +45,13 @@ public class BootStrapData implements CommandLineRunner {
         jane.getBooks().add(prideAndPrejudice);
         prideAndPrejudice.getAuthors().add(jane);
 
+        Book senseAndSensibility = new Book("Sense and Sensibility", "189023435");
+        jane.getBooks().add(senseAndSensibility);
+        senseAndSensibility.getAuthors().add(jane);
+
         this.authorRepository.save(jane);
         this.bookRepository.save(prideAndPrejudice);
+        this.bookRepository.save(senseAndSensibility);
 
         Author brandon = new Author("Brandon", "Mull");
         Book fablehaven = new Book("Fabelhaven", "14310893");
